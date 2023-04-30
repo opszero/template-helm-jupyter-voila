@@ -1,0 +1,33 @@
+defaultImage: nginx:latest
+
+apps:
+  - name: voila
+    service:
+      enabled: true
+      type: ClusterIP
+      command: ["voila", "--no-browser", "--enable_nbextensions=True", "--Voila.ip=0.0.0.0", "--VoilaConfiguration.default_pool_size=16", "report.ipynb"]
+      ports:
+        - name: http
+          port: 8866
+          protocol: TCP
+      autoscaling:
+        enabled: true
+        minReplicas: 1
+        maxReplicas: 1
+        targetCPUUtilizationPercentage: 99
+        targetMemoryUtilizationPercentage: 99
+      resources:
+        limits:
+          cpu: "1"
+          memory: "2048Mi"
+        requests:
+          cpu: "1"
+          memory: "2048Mi"
+      ingress:
+        hosts:
+          - host: tiphyspy.opszero.com
+            paths: ["/"]
+            port: 8866
+          - host: fn.opszero.com
+            paths: ["/"]
+            port: 8866
