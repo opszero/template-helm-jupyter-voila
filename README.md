@@ -5,7 +5,6 @@ Build [Jupyter Notebooks](https://jupyter.org/) as
 Quickly turn data science projects into actionable dashboards.
 
 - Jupyter Voila WebApp
-- [Example](https://tiphyspy.opszero.com/)
 
 # Pro Support
 
